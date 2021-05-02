@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>VIAPI</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto">
+                <h2>VIAPI RecognizeIdentityCard Example</h2>
+
+                <form method="post" action="/api" enctype="multipart/form-data">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input id='location' class="form-control" onclick="$('#i-face').click();">
+                            <label class="input-group-btn">
+                                <input type="button" id="i-check" value="上传人像面" class="btn btn-primary" onclick="$('#i-face').click();">
+                            </label>
+                        </div>
+                    </div>
+                    <input type="file" name="front" id='i-face'  accept=".jpg, .png, .jpeg" onchange="$('#location').val($('#i-face').val());" style="display: none">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input id='location1' class="form-control" onclick="$('#i-back').click();">
+                            <label class="input-group-btn">
+                                <input type="button" id="i-check-1" value="上传国徽面" class="btn btn-primary" onclick="$('#i-back').click();">
+                            </label>
+                        </div>
+                    </div>
+                    <input type="file" name="back" id='i-back'  accept=".jpg, .png, .jpeg" onchange="$('#location1').val($('#i-back').val());" style="display: none">
+
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary">开始识别</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-12 mx-auto">
+                <div class="col-sm-4">
+                    <img style="width: 100%;" src="{{front}}" class="img-fluid" alt=""/>
+                </div>
+                <div class="col-sm-4">
+                    <img style="width: 100%;" src="{{back}}"  class="img-fluid" alt=""/>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-12 mx-auto">
+                <div class="col-sm-4">
+                    <p ><span>姓名：{{name}}</span></p>
+                    <p ><span>性别：{{gender}}</span></p>
+                    <p ><span>民族：{{nation}}</span></p>
+                    <p ><span>出生日期：{{birth}}</span></p>
+                    <p ><span>住址：{{address}}</span></p>
+                    <p ><span>身份证号码：{{no}}</span></p>
+                </div>
+                <div class="col-sm-4">
+                    <p ><span>签发机关：{{issue}}</span></p>
+                    <p ><span>有效日期：{{date}}</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
